@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dicee</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+  </head>
+  <body>
+    
+    <div class="container">
+      <h1>Refresh Me</h1>
+      
+      <div class="dice">
+        <p class="player1">Player 1</p>
+        <img class="img1" src="dice6.png">
+      </div>
+      
+      <div class="dice">
+        <p class="player2">Player 2</p>
+        <img class="img2" src="dice6.png">
+      </div>
+      </div>
+      <div class="container bottom">
+        <button type="button" class="butn"
+            onClick="Rolldice()">
+            Roll the Dice
+        </button>
+    </div>
+    <div class="container bottom">
+        <button type="button" class="butn"
+            onClick="editnames()">
+            Edit Names
+        </button>
+    </div>
+    <script>
+      var player1 = "Player 1";
+      var player2 = "Player 2";
+      function editnames(){
+ player1 = prompt("Enter the name of player 1");
+ player2 = prompt("Enter the name of player 2");
+
+document.querySelector("p.player1").innerHTML=player1;
+document.querySelector("p.player2").innerHTML=player2;
+}
+
+function Rolldice(){
+    setTimeout(function(){
+        var randomnumber1 = (Math.floor(Math.random()*6)+1);
+        var randomnumber2 = (Math.floor(Math.random()*6)+1);
+        document.querySelector(".img1").setAttribute("src","dice"+randomnumber1+".png");
+        document.querySelector(".img2").setAttribute("src","dice"+randomnumber2+".png");
+        if(randomnumber1===randomnumber2){
+            document.querySelector("h1").innerHTML="Draw!";
+        }
+        else if(randomnumber1>randomnumber2){
+            document.querySelector("h1").innerHTML=(player1+" "+"Wins!");
+        }
+        else{
+            document.querySelector("h1").innerHTML=(player2+" "+"Wins!");
+        }
+    },1000)
+}
+    </script>
+    
+  </body>
+
+  <footer>
+    www 🎲 App Brewery 🎲 com
+  </footer>
+</html>
